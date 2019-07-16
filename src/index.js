@@ -5,21 +5,16 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "typeface-roboto";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core";
-
-const theme = createMuiTheme({
-	palette: {
-		type: "dark"
-	}
-});
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
 	<BrowserRouter>
-		<ThemeProvider theme={theme}>
+		<Provider store={store}>
 			<App />
-		</ThemeProvider>
+		</Provider>
 	</BrowserRouter>,
+
 	document.getElementById("root")
 );
 
@@ -27,4 +22,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-// endpoint: https://opentdb.com/api_config.php
