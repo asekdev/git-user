@@ -1,8 +1,10 @@
-import { put, takeLatest, all } from "redux-saga/effects";
+import { put, takeLatest, all, select } from "redux-saga/effects";
 import { GIT_ENDPOINT, GET_USER_DATA } from "../constants";
+import { usernameSelector } from "../selectors";
 
-function* fetchUser(username) {
+function* fetchUser() {
 	//work out how to include the username here from the state
+	const username = yield select(usernameSelector);
 	const json = yield fetch(`${GIT_ENDPOINT}/${username}`).then(response => response.json());
 
 	console.log(json);
