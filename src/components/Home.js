@@ -2,22 +2,26 @@ import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Grid, Container, Button, TextField, Box } from "@material-ui/core";
+import { Grid, Container, Button, TextField, Box, Input } from "@material-ui/core";
 import { dataSelector, usernameSelector, loadingSelector, errorSelector } from "../redux/selectors";
 
 import { getUser, clearState, changUserInput } from "../redux/actions";
 import store from "../redux/store";
 import { createStructuredSelector } from "reselect";
+import Error from "./Error";
 
 const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }) => {
 	useEffect(() => {}, []);
 
+	let errorComponent = error ? <Error error={"Something happened..."} /> : null;
+
 	const submitUser = () => {
 		console.log("hitting function");
 		if (username.trim() !== "") {
+			console.log("RUNNING");
+
 			onSubmit();
 		}
-		console.log("not running it");
 	};
 
 	return (
@@ -38,17 +42,18 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 						</Typography>
 					</Grid>
 					<Box display={"flex"} justifyContent={"center"} width={"100%"}>
-						<Box width={"100%"}>
-							<input onChange={onUserInput} />
+						<Box width={"70%"}>
+							<Input fullWidth={true} onChange={onUserInput} placeholder={"Enter a github username"} />
 						</Box>
-						<Box width={"15%"}>
-							<Button variant={"contained"} color="primary" fullWidth={true} onClick={submitUser}>
+						<Box width={"15%"} paddingLeft={20}>
+							<Button variant={"contained"} fullWidth={true} color="primary" onClick={submitUser}>
 								Go
 							</Button>
 						</Box>
 					</Box>
 					<p>{JSON.stringify(store.getState(), null, 2)}</p>
 				</Box>
+				{errorComponent}
 			</Grid>
 		</Container>
 	);
