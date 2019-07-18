@@ -71,9 +71,9 @@ const GitUser = ({ data }) => {
 						</Grid>
 					</CardContent>
 
-					<CardActions style={{ justifyContent: "center" }}>
-						<a href={html_url} target="_blank" style={{ textDecorationLine: "none" }}>
-							<Button size="medium" color="primary">
+					<CardActions style={{ justifyContent: "center", flexGrow: 1 }}>
+						<a href={html_url} target="_blank" style={{ textDecorationLine: "none", width: "100%" }}>
+							<Button size="medium" color="primary" fullWidth={true}>
 								Go to page
 							</Button>
 						</a>
