@@ -2,24 +2,24 @@ import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Grid, Container, Button, TextField, Box, Input } from "@material-ui/core";
+import { Grid, Container, Button, Box, Input } from "@material-ui/core";
 import { dataSelector, usernameSelector, loadingSelector, errorSelector } from "../redux/selectors";
-
 import { getUser, clearState, changUserInput } from "../redux/actions";
-import store from "../redux/store";
 import { createStructuredSelector } from "reselect";
 import Error from "./Error";
+import GitUser from "./GitUser";
+import Loader from "./Loader";
 
 const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }) => {
 	useEffect(() => {}, []);
 
 	let errorComponent = error ? <Error error={"Something happened..."} /> : null;
-
+	let userComponent = Object.keys(data).length !== 0 ? <GitUser data={data} /> : null;
+	let loadingComponent = loading ? <Loader /> : null;
 	const submitUser = () => {
 		console.log("hitting function");
 		if (username.trim() !== "") {
 			console.log("RUNNING");
-
 			onSubmit();
 		}
 	};
@@ -32,12 +32,11 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 				direction="column"
 				alignContent="center"
 				alignItems="stretch"
-				// justify="center"
 				style={{ minHeight: "100vh", marginTop: "50px", minWidth: "100vh" }}
 			>
-				<Box width="100%" justifyContent={"center"}>
+				<Box width="80%" justifyContent={"center"}>
 					<Grid item xs={12}>
-						<Typography variant="h1" color="textSecondary" style={{ textAlign: "center" }}>
+						<Typography variant="h1" color="textSecondary" style={{ textAlign: "center", marginTop: "100px" }}>
 							Git User
 						</Typography>
 					</Grid>
@@ -45,15 +44,16 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 						<Box width={"70%"}>
 							<Input fullWidth={true} onChange={onUserInput} placeholder={"Enter a github username"} />
 						</Box>
-						<Box width={"15%"} paddingLeft={20}>
+						<Box width={"15%"} paddingLeft={5}>
 							<Button variant={"contained"} fullWidth={true} color="primary" onClick={submitUser}>
 								Go
 							</Button>
 						</Box>
 					</Box>
-					<p>{JSON.stringify(store.getState(), null, 2)}</p>
 				</Box>
 				{errorComponent}
+				{loadingComponent}
+				{userComponent}
 			</Grid>
 		</Container>
 	);

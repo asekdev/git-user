@@ -1,9 +1,12 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
 
 const Error = ({ error }) => {
 	return (
-		<div>
-			<pre>{error}</pre>
+		<div style={{ display: "flex", alignContent: "center", justifyContent: "center", color: "red", marginTop: 50 }}>
+			<Typography variant="h6" gutterBottom>
+				{error}
+			</Typography>
 		</div>
 	);
 };
