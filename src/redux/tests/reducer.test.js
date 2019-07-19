@@ -45,4 +45,9 @@ describe("Reducer Tests", () => {
 		};
 		expect(userReducer(state, changUserInput(username))).toEqual(expectedState);
 	});
+
+	it("should handle clear state action successfully", () => {
+		const expectedState = state;
+		expect(userReducer(state, clearState())).toEqual(expectedState);
+	});
 });
