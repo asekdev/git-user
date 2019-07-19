@@ -15,7 +15,7 @@ export function* fetchUser() {
 		yield put(dataReceivedSuccess(json.data));
 		console.log(json.data);
 	} catch (err) {
-		yield put(dataReceivedError(err));
+		yield put(dataReceivedError());
 	}
 }
 

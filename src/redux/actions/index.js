@@ -19,7 +19,7 @@ export const changUserInput = username => ({
 	payload: username
 });
 
-export const dataReceivedError = error => ({
+export const dataReceivedError = () => ({
 	type: RECEIVED_USER_DATA_FAILED
 });
 
