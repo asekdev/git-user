@@ -1,25 +1,37 @@
 import React, { useEffect } from "react";
-import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Grid, Container, Button, Box, Input } from "@material-ui/core";
 import { dataSelector, usernameSelector, loadingSelector, errorSelector } from "../redux/selectors";
 import { getUser, clearState, changUserInput } from "../redux/actions";
 import { createStructuredSelector } from "reselect";
+import { makeStyles } from "@material-ui/core/styles";
 import Error from "./Error";
 import GitUser from "./GitUser";
 import Loader from "./Loader";
+import Header from "./Header";
+
+const useStyles = makeStyles({
+	header: {
+		color: "#F2F2F2",
+		textAlign: "center",
+		marginTop: "100px",
+		fontWeight: 500
+	},
+	icon: {
+		fontSize: 75,
+		paddingRight: 10
+	}
+});
 
 const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }) => {
-	useEffect(() => {}, []);
-
-	let errorComponent = error ? <Error error={"Something happened..."} /> : null;
+	const classes = useStyles();
+	let errorComponent = error ? <Error error={`@${username} doesn't exist.`} /> : null;
 	let userComponent = Object.keys(data).length !== 0 ? <GitUser data={data} /> : null;
 	let loadingComponent = loading ? <Loader /> : null;
+
 	const submitUser = () => {
-		console.log("hitting function");
 		if (username.trim() !== "") {
-			console.log("RUNNING");
 			onSubmit();
 		}
 	};
@@ -34,12 +46,8 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 				alignItems="stretch"
 				style={{ minHeight: "100vh", marginTop: "50px", minWidth: "100vh" }}
 			>
-				<Box width="80%" justifyContent={"center"}>
-					<Grid item xs={12}>
-						<Typography variant="h1" color="textSecondary" style={{ textAlign: "center", marginTop: "100px" }}>
-							Git User
-						</Typography>
-					</Grid>
+				<Box width="80%" justifyContent="center">
+					<Header />
 					<Box display={"flex"} justifyContent={"center"} width={"100%"}>
 						<Box width={"70%"}>
 							<Input fullWidth={true} onChange={onUserInput} placeholder={"Enter a github username"} />
