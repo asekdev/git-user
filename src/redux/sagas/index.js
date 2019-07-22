@@ -13,7 +13,6 @@ export function* fetchUser() {
 			json = res;
 		});
 		yield put(dataReceivedSuccess(json.data));
-		console.log(json.data);
 	} catch (err) {
 		yield put(dataReceivedError());
 	}

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Grid, Container, Button, Box, Input } from "@material-ui/core";
+import { Grid, Container, Button, Box, FilledInput } from "@material-ui/core";
 import { dataSelector, usernameSelector, loadingSelector, errorSelector } from "../redux/selectors";
 import { getUser, clearState, changUserInput } from "../redux/actions";
 import { createStructuredSelector } from "reselect";
@@ -21,17 +21,22 @@ const useStyles = makeStyles({
 	icon: {
 		fontSize: 75,
 		paddingRight: 10
+	},
+	goBtnStyle: {
+		padding: "10px"
 	}
 });
 
 const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }) => {
 	const classes = useStyles();
-	let errorComponent = error ? <Error error={`@${username} doesn't exist.`} /> : null;
+	const [user, setUser] = useState("");
+	let errorComponent = error ? <Error error={`@${user} doesn't exist. Try another user.`} /> : null;
 	let userComponent = Object.keys(data).length !== 0 ? <GitUser data={data} /> : null;
 	let loadingComponent = loading ? <Loader /> : null;
 
 	const submitUser = () => {
 		if (username.trim() !== "") {
+			setUser(username);
 			onSubmit();
 		}
 	};
@@ -44,16 +49,22 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 				direction="column"
 				alignContent="center"
 				alignItems="stretch"
-				style={{ minHeight: "100vh", marginTop: "50px", minWidth: "100vh" }}
+				style={{ minHeight: "100vh", minWidth: "100vh" }}
 			>
 				<Box width="80%" justifyContent="center">
 					<Header />
 					<Box display={"flex"} justifyContent={"center"} width={"100%"}>
-						<Box width={"70%"}>
-							<Input fullWidth={true} onChange={onUserInput} placeholder={"Enter a github username"} />
+						<Box width={"70%"} color="primary" marginTop={5}>
+							<FilledInput
+								fullWidth={true}
+								onChange={onUserInput}
+								autoFocus={true}
+								placeholder={"Enter a github username"}
+								style={{ color: "#F2F2F2", fontSize: 20 }}
+							/>
 						</Box>
-						<Box width={"15%"} paddingLeft={5}>
-							<Button variant={"contained"} fullWidth={true} color="primary" onClick={submitUser}>
+						<Box width={"15%"} paddingLeft={5} paddingTop={6}>
+							<Button variant="contained" fullWidth={true} onClick={submitUser} className={classes.goBtnStyle}>
 								Go
 							</Button>
 						</Box>

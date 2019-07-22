@@ -11,11 +11,25 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
 	card: {
 		width: 400,
-		backgroundColor: "#130f40"
+		backgroundColor: "#ecf0f1"
+	},
+	text: {
+		color: "#353b48"
+	},
+	subHeader: {
+		color: "#34495e",
+		fontWeight: 600
 	},
 	media: {
 		height: 250,
 		objectFit: "contain"
+	},
+	btn: {
+		textDecorationLine: "none",
+		width: "100%",
+		backgroundColor: "#45aaf2",
+		color: "#F2F2F2",
+		borderRadius: 5
 	}
 });
 
@@ -31,40 +45,76 @@ const GitUser = ({ data }) => {
 					</div>
 
 					<CardContent>
-						<Typography variant="h5" component="h2">
+						<Typography variant="h5" component="h2" className={classes.subHeader}>
 							{name}
 						</Typography>
-						<Typography variant="subtitle1" color="textSecondary" component="p">
+						<Typography variant="subtitle1" color="textSecondary" component="p" className={classes.text}>
 							@{login}
 						</Typography>
-						<Typography variant="subtitle2" color="textPrimary" component="p">
+						<Typography variant="subtitle2" color="textPrimary" component="p" className={classes.text}>
 							{bio}
 						</Typography>
-						<Typography variant="body2" color="textPrimary" component="p">
+						<Typography variant="body2" color="textPrimary" component="p" className={classes.text}>
 							{location}
 						</Typography>
 						<Grid container style={{ marginTop: 10 }}>
 							<Grid item sm={4}>
-								<Typography variant="h6" color="textPrimary" component="p" align={"center"}>
+								<Typography
+									variant="h6"
+									color="textPrimary"
+									component="p"
+									align={"center"}
+									className={classes.subHeader}
+								>
 									{following}
 								</Typography>
-								<Typography variant="subtitle1" color="textSecondary" component="p" align={"center"}>
+								<Typography
+									variant="subtitle1"
+									color="textSecondary"
+									component="p"
+									align={"center"}
+									className={classes.text}
+								>
 									Following
 								</Typography>
 							</Grid>
 							<Grid item sm={4}>
-								<Typography variant="h6" color="textPrimary" component="p" align={"center"}>
+								<Typography
+									variant="h6"
+									color="textPrimary"
+									component="p"
+									align={"center"}
+									className={classes.subHeader}
+								>
 									{followers}
 								</Typography>
-								<Typography variant="subtitle1" color="textSecondary" component="p" align={"center"}>
+								<Typography
+									variant="subtitle1"
+									color="textSecondary"
+									component="p"
+									align={"center"}
+									className={classes.text}
+								>
 									Followers
 								</Typography>
 							</Grid>
 							<Grid item sm={4}>
-								<Typography variant="h6" color="textPrimary" component="p" align={"center"}>
+								<Typography
+									variant="h6"
+									color="textPrimary"
+									component="p"
+									align={"center"}
+									className={classes.subHeader}
+								>
 									{public_repos}
 								</Typography>
-								<Typography variant="subtitle1" color="textSecondary" component="p" align={"center"}>
+								<Typography
+									variant="subtitle1"
+									color="textSecondary"
+									component="p"
+									align={"center"}
+									className={classes.text}
+								>
 									Repos
 								</Typography>
 							</Grid>
@@ -72,8 +122,13 @@ const GitUser = ({ data }) => {
 					</CardContent>
 
 					<CardActions style={{ justifyContent: "center", flexGrow: 1 }}>
-						<a href={html_url} target="_blank" style={{ textDecorationLine: "none", width: "100%" }}>
-							<Button size="medium" color="primary" fullWidth={true}>
+						<a href={html_url} target="_blank" className={classes.btn} rel="noopener noreferrer">
+							<Button
+								size="medium"
+								variant="contained"
+								fullWidth={true}
+								style={{ backgroundColor: "inherit", color: "inherit" }}
+							>
 								Go to page
 							</Button>
 						</a>
