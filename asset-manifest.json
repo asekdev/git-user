@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/git-user/static/css/main.d0afec78.chunk.css",
+    "main.js": "/git-user/static/js/main.7f9f6f0d.chunk.js",
+    "main.js.map": "/git-user/static/js/main.7f9f6f0d.chunk.js.map",
+    "runtime~main.js": "/git-user/static/js/runtime~main.68c2b386.js",
+    "runtime~main.js.map": "/git-user/static/js/runtime~main.68c2b386.js.map",
+    "static/css/2.1896e37a.chunk.css": "/git-user/static/css/2.1896e37a.chunk.css",
+    "static/js/2.feee8f42.chunk.js": "/git-user/static/js/2.feee8f42.chunk.js",
+    "static/js/2.feee8f42.chunk.js.map": "/git-user/static/js/2.feee8f42.chunk.js.map",
+    "index.html": "/git-user/index.html",
+    "precache-manifest.229d85b582d06fd4e22c4ea734de342d.js": "/git-user/precache-manifest.229d85b582d06fd4e22c4ea734de342d.js",
+    "service-worker.js": "/git-user/service-worker.js",
+    "static/css/2.1896e37a.chunk.css.map": "/git-user/static/css/2.1896e37a.chunk.css.map",
+    "static/css/main.d0afec78.chunk.css.map": "/git-user/static/css/main.d0afec78.chunk.css.map",
+    "static/media/index.css": "/git-user/static/media/roboto-latin-900italic.bc833e72.woff"
+  }
+}
