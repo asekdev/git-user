@@ -5,7 +5,6 @@ import axios from "axios";
 import { dataReceivedError, dataReceivedSuccess } from "../actions";
 
 export function* fetchUser() {
-	//work out how to include the username here from the state
 	let json;
 	try {
 		const username = yield select(usernameSelector());
