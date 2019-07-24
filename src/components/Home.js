@@ -59,6 +59,7 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 								fullWidth={true}
 								onChange={onUserInput}
 								autoFocus={true}
+								disableUnderline={true}
 								placeholder={"Enter a github username"}
 								style={{ color: "#F2F2F2", fontSize: 20 }}
 							/>

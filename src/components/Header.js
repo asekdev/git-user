@@ -31,7 +31,7 @@ const Header = () => {
 				Git User
 			</Typography>
 			<Typography variant="h6" color="textSecondary" className={classes.subheading}>
-				Input a git user's username to get a link to their page.
+				Input a git user's username to get a link to their page
 			</Typography>
 		</Grid>
 	);

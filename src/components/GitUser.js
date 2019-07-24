@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 	btn: {
 		textDecorationLine: "none",
 		width: "100%",
-		backgroundColor: "#45aaf2",
+		backgroundColor: "#1abc9c",
 		color: "#F2F2F2",
 		borderRadius: 5
 	}
