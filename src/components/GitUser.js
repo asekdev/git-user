@@ -58,7 +58,7 @@ const GitUser = ({ data }) => {
 							{location}
 						</Typography>
 						<Grid container style={{ marginTop: 10 }}>
-							<Grid item sm={4}>
+							<Grid item xs>
 								<Typography
 									variant="h6"
 									color="textPrimary"
@@ -78,7 +78,7 @@ const GitUser = ({ data }) => {
 									Following
 								</Typography>
 							</Grid>
-							<Grid item sm={4}>
+							<Grid item xs>
 								<Typography
 									variant="h6"
 									color="textPrimary"
@@ -98,7 +98,7 @@ const GitUser = ({ data }) => {
 									Followers
 								</Typography>
 							</Grid>
-							<Grid item sm={4}>
+							<Grid item xs>
 								<Typography
 									variant="h6"
 									color="textPrimary"
