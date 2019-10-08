@@ -1,20 +1,15 @@
-import { put, takeLatest, all, select } from "redux-saga/effects";
-import { GIT_ENDPOINT, GET_USER_DATA } from "../constants";
+import { put, takeLatest, all, select, call } from "redux-saga/effects";
+import { GET_USER_DATA } from "../constants";
 import { usernameSelector } from "../selectors";
-import axios from "axios";
-import { dataReceivedError, dataReceivedSuccess } from "../actions";
+import { dataReceivedError, dataReceivedSuccess, getUserData } from "../actions";
 
 export function* fetchUser() {
-	let json;
-	try {
-		const username = yield select(usernameSelector());
-		yield axios.get(GIT_ENDPOINT + username).then(res => {
-			json = res;
-		});
-		yield put(dataReceivedSuccess(json.data));
-	} catch (err) {
-		yield put(dataReceivedError());
-	}
+	const username = yield select(usernameSelector());
+	const apiCall = yield call(getUserData, username);
+	const { data, status } = apiCall;
+	const outcome = status === 200 ? yield put(dataReceivedSuccess(data)) : yield put(dataReceivedError());
+
+	return outcome;
 }
 
 //watches for the GET_USER_DATA action to be called - then executes accordingly
