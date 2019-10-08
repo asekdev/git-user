@@ -31,7 +31,7 @@ const Header = () => {
 				Git User
 			</Typography>
 			<Typography variant="h6" color="textSecondary" className={classes.subheading}>
-				Input a git user's username and hit enter
+				Input a github username and search!
 			</Typography>
 		</Grid>
 	);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Grid, Container, Box, FilledInput } from "@material-ui/core";
+import { Grid, Container, Button, Box, FilledInput } from "@material-ui/core";
 import { dataSelector, usernameSelector, loadingSelector, errorSelector } from "../redux/selectors";
 import { getUser, clearState, changUserInput } from "../redux/actions";
 import { createStructuredSelector } from "reselect";
@@ -72,7 +72,7 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 								onKeyPress={checkSubmit}
 							/>
 						</Box>
-						{/* <Box width={"15%"} paddingLeft={5} paddingTop={6}>
+						<Box width={"15%"} paddingLeft={5} paddingTop={6}>
 							<Button
 								variant="contained"
 								data-testid="submit-gitUser"
@@ -82,7 +82,7 @@ const Home = ({ data, username, loading, error, onSubmit, onClear, onUserInput }
 							>
 								Go
 							</Button>
-						</Box> */}
+						</Box>
 					</Box>
 				</Box>
 				{errorComponent}
